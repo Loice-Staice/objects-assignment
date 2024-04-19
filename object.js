@@ -15,17 +15,28 @@ people.forEach(i => {
 console.log(adults)
 
 //2
-function categories(products){
-  let categorisedItems =Object.groupBy(products, product=>product.category)
-console.log(categorisedItems);
+function groupByCategory(products) {
+  const groupedProducts = {};
+  for (const product of products) {
+    if (!groupedProducts[product.category]) {
+      groupedProducts[product.category] = [];
+    }
+    groupedProducts[product.category].push(product);
+  }
+  return groupedProducts;
 }
 
 const products = [
-    { name: 'Laptop', price: 1200, category: 'Electronics' },
-    { name: 'Shirt', price: 25, category: 'Clothing' },
-    { name: 'Headphones', price: 80, category: 'Electronics' },
-    { name: 'Shoes', price: 60, category: 'Clothing' },
-  ];
+  { name: 'Laptop', price: 1200, category: 'Electronics' },
+  { name: 'Shirt', price: 25, category: 'Clothing' },
+  { name: 'Headphones', price: 80, category: 'Electronics' },
+  { name: 'Shoes', price: 60, category: 'Clothing' },
+];
+
+console.log(groupByCategory(products));
+
+
+  
 
 
 
